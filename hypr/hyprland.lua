@@ -28,6 +28,8 @@ hl.config({
         inactive_opacity = 0.93,
     },
     misc = {
+    mouse_move_enables_dpms = true,
+    key_press_enables_dpms = true,
         background_color = "rgb(1e1e2e)",
   disable_hyprland_logo = true,
     },

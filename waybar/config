@@ -4,7 +4,7 @@
   "height": 36,
   "spacing": 6,
   "modules-left": [
-    "hyprland/workspaces",
+    "ext/workspaces",
     "hyprland/window"
   ],
   "modules-center": [
@@ -20,18 +20,6 @@
     "tray",
     "custom/power"
   ],
-  "hyprland/workspaces": {
-    "format": "{icon}",
-    "format-icons": {
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5"
-    },
-    "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1"
-  },
   "clock": {
     "format": "\uf017 {:%d %b %H:%M}",
     "tooltip-format": "{:%A %d %B %Y}",
@@ -96,5 +84,18 @@
     "format": "\u23fb",
     "tooltip": "G\u00fc\u00e7 men\u00fcs\u00fc",
     "on-click": "/home/insanmusti/.config/wofi/powermenu.sh"
+  },
+  "ext/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5"
+    },
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'",
+    "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'"
   }
 }
