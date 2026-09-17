@@ -1,0 +1,62 @@
+# ===========================
+# Kitty Configuration
+# ===========================
+
+# Font
+font_family JetBrains Mono
+bold_font auto
+italic_font auto
+bold_italic_font auto
+font_size 13.5
+disable_ligatures never
+
+# Window
+remember_window_size yes
+confirm_os_window_close 0
+window_padding_width 12
+hide_window_decorations no
+
+# Background
+background_opacity 0.94
+
+# Cursor
+cursor_shape beam
+cursor_blink_interval 0.5
+cursor_stop_blinking_after 15
+
+# Bell
+enable_audio_bell no
+visual_bell_duration 0
+
+# Mouse
+copy_on_select yes
+mouse_hide_wait 1.5
+
+# Tabs
+tab_bar_edge top
+tab_bar_style powerline
+tab_powerline_style slanted
+
+active_tab_font_style bold
+inactive_tab_font_style normal
+
+# Scrollback
+scrollback_lines 10000
+wheel_scroll_multiplier 5.0
+
+# Performance
+repaint_delay 10
+input_delay 3
+sync_to_monitor yes
+
+# Selection
+strip_trailing_spaces smart
+
+# Shell integration
+shell_integration enabled
+
+# Clipboard
+clipboard_control write-clipboard write-primary
+
+# Window title
+dynamic_background_opacity yes

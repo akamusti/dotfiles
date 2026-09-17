@@ -1,0 +1,94 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 36,
+  "spacing": 6,
+  "modules-left": [
+    "hyprland/workspaces",
+    "hyprland/window"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "battery",
+    "bluetooth",
+    "pulseaudio",
+    "network",
+    "tray"
+  ],
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5"
+    },
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1"
+  },
+  "clock": {
+    "format": "\uf017 {:%d %b %H:%M}",
+    "tooltip-format": "{:%A %d %B %Y}",
+    "on-click": "swaync-client -t -sw"
+  },
+  "cpu": {
+    "format": "\uf2db {usage}%",
+    "on-click": "kitty -e htop"
+  },
+  "memory": {
+    "format": "\uf0c9 {percentage}%",
+    "on-click": "kitty -e htop"
+  },
+  "bluetooth": {
+    "format": "\uf294 {status}",
+    "format-connected": "\uf294 {device_alias}",
+    "format-off": "\uf294",
+    "format-disabled": "\uf294",
+    "tooltip-format": "{status}",
+    "on-click": "blueman-manager"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-icons": {
+      "default": [
+        "\uf026",
+        "\uf027",
+        "\uf028"
+      ]
+    },
+    "on-click": "pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+  },
+  "network": {
+    "format-wifi": "\uf1eb {essid}",
+    "format-ethernet": "\uf6ff {ifname}",
+    "format-disconnected": "\ufaa9 yok",
+    "on-click": "nm-connection-editor"
+  },
+  "tray": {
+    "spacing": 8
+  },
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": [
+      "\uf244",
+      "\uf243",
+      "\uf242",
+      "\uf241",
+      "\uf240"
+    ],
+    "format-charging": "\uf0e7 {capacity}%",
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "on-click": "kitty -e htop"
+  }
+}

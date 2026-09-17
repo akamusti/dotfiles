@@ -1,0 +1,20 @@
+{
+  "positionX": "right",
+  "positionY": "top",
+  "layer": "overlay",
+  "control-center-layer": "top",
+  "cssPriority": "user",
+  "control-center-width": 380,
+  "control-center-height": 860,
+  "notification-window-width": 380,
+  "timeout": 6,
+  "timeout-low": 3,
+  "timeout-critical": 0,
+  "keyboard-shortcuts": true,
+  "widgets": ["title", "dnd", "notifications", "mpris"],
+  "widget-config": {
+    "title": {"text": "Bildirimler", "clear-all-button": true, "button-text": "Temizle"},
+    "dnd": {"text": "Rahatsız Etme"},
+    "mpris": {"image-size": 64, "image-radius": 8}
+  }
+}

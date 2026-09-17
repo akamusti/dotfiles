@@ -1,0 +1,38 @@
+{
+  "positionX": "right",
+  "positionY": "top",
+  "layer": "overlay",
+  "control-center-layer": "top",
+  "cssPriority": "user",
+  "control-center-width": 380,
+  "control-center-height": 860,
+  "notification-window-width": 380,
+  "timeout": 6,
+  "timeout-low": 3,
+  "timeout-critical": 0,
+  "keyboard-shortcuts": true,
+  "widgets": [
+    "title",
+    "dnd",
+    "volume",
+    "notifications",
+    "mpris"
+  ],
+  "widget-config": {
+    "title": {
+      "text": "Bildirimler",
+      "clear-all-button": true,
+      "button-text": "Temizle"
+    },
+    "dnd": {
+      "text": "Rahats\u0131z Etme"
+    },
+    "mpris": {
+      "image-size": 64,
+      "image-radius": 8
+    },
+    "volume": {
+      "label": "Ses"
+    }
+  }
+}
