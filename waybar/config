@@ -17,7 +17,8 @@
     "bluetooth",
     "pulseaudio",
     "network",
-    "tray"
+    "tray",
+    "custom/power"
   ],
   "hyprland/workspaces": {
     "format": "{icon}",
@@ -90,5 +91,10 @@
       "critical": 15
     },
     "on-click": "kitty -e htop"
+  },
+  "custom/power": {
+    "format": "\u23fb",
+    "tooltip": "G\u00fc\u00e7 men\u00fcs\u00fc",
+    "on-click": "/home/insanmusti/.config/wofi/powermenu.sh"
   }
 }

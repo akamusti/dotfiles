@@ -28,7 +28,8 @@ hl.config({
         inactive_opacity = 0.93,
     },
     misc = {
-        background_color = "rgb(1e1e2e); disable_hyprland_logo = true",
+        background_color = "rgb(1e1e2e)",
+  disable_hyprland_logo = true,
     },
     animations = {
         enabled = true,
@@ -77,8 +78,8 @@ hl.animation({
 hl.bind(var_mainMod .. " + Return", hl.dsp.exec_cmd("kitty"))
 hl.bind(var_mainMod .. " + T", hl.dsp.exec_cmd("kitty"))
 hl.bind("ALT + Return", hl.dsp.exec_cmd("kitty"))
-hl.bind(var_mainMod .. " + D", hl.dsp.exec_cmd("wofi --show drun"))
-hl.bind(var_mainMod .. " + Space", hl.dsp.exec_cmd("wofi --show drun"))
+hl.bind(var_mainMod .. " + D", hl.dsp.exec_cmd("pkill wofi || wofi --show drun"))
+hl.bind(var_mainMod .. " + Space", hl.dsp.exec_cmd("pkill wofi || wofi --show drun"))
 hl.bind(var_mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(var_mainMod .. " + SHIFT + M", hl.dsp.exit())
 hl.bind(var_mainMod .. " + F", hl.dsp.window.fullscreen())
@@ -108,21 +109,6 @@ hl.on("hyprland.start", function()
 end)
 
 -- bind = , Print, exec, grim -g "$(slurp)" ~/Pictures/screenshot-$(date +%F-%H%M%S).png
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), {
-    locked = true,
-})
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), {
-    locked = true,
-})
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("swayosd-client --output-volume 5%+"), {
-    locked = true,
-})
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 5%-"), {
-    locked = true,
-})
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set 5%+"), {
-    locked = true,
-})
 hl.bind(var_mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 
 hl.on("hyprland.start", function()
@@ -130,27 +116,42 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("blueman-applet &")
 end)
 
--- bind = , Print, exec, spectacle -r
-hl.bind("SHIFT + Print", hl.dsp.exec_cmd("spectacle"))
 hl.bind(var_mainMod .. " + Print", hl.dsp.exec_cmd("grim -g \"$(slurp)\" ~/Pictures/screenshot-$(date +%F-%H%M%S).png"))
 hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region --raw | swappy -f -"))
 hl.bind("SHIFT + Print", hl.dsp.exec_cmd("hyprshot -m region --clipboard"))
 hl.bind(var_mainMod .. " + Print", hl.dsp.exec_cmd("hyprshot -m window --clipboard"))
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), {
-    locked = true,
-})
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), {
-    locked = true,
-})
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"), {
-    locked = true,
-})
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 5%-"), {
-    locked = true,
-})
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set 5%+"), {
-    locked = true,
-})
 
 -- HyprMod managed settings
 require("hyprland-gui")
+
+-- ses/parlaklik OSD + medya + eksik tuslar (tek kopya)
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("/home/insanmusti/.config/hypr/vol-osd.sh mute"), {
+    locked = true,
+})
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("/home/insanmusti/.config/hypr/vol-osd.sh down"), {
+    locked = true,
+})
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("/home/insanmusti/.config/hypr/vol-osd.sh up"), {
+    locked = true,
+})
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("/home/insanmusti/.config/hypr/bri-osd.sh down"), {
+    locked = true,
+})
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("/home/insanmusti/.config/hypr/bri-osd.sh up"), {
+    locked = true,
+})
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), {
+    locked = true,
+})
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), {
+    locked = true,
+})
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), {
+    locked = true,
+})
+hl.bind("XF86AudioStop", hl.dsp.exec_cmd("playerctl stop"), {
+    locked = true,
+})
+hl.bind("ALT + Q", hl.dsp.window.close())
+hl.bind("ALT + Space", hl.dsp.exec_cmd("pkill wofi || wofi --show drun"))
+hl.bind(var_mainMod .. " + " .. "X", hl.dsp.exec_cmd("pkill wofi || /home/insanmusti/.config/wofi/powermenu.sh"))
