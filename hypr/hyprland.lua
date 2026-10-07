@@ -154,6 +154,56 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), {
 hl.bind("XF86AudioStop", hl.dsp.exec_cmd("playerctl stop"), {
     locked = true,
 })
+-- Laptop Fn+F1..F12 (Fn OS'e modifier olarak gorunmez, cekirdek XF86 uretir)
+-- sh ile cagirilir, +x biti gerekmez.
+local fn = "sh /home/insanmusti/.config/hypr/fn-osd.sh "
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd(fn .. "mic"), { locked = true })
+hl.bind("XF86KbdBrightnessDown", hl.dsp.exec_cmd(fn .. "kbd-down"), { locked = true })
+hl.bind("XF86KbdBrightnessUp", hl.dsp.exec_cmd(fn .. "kbd-up"), { locked = true })
+hl.bind("XF86KbdLightOnOff", hl.dsp.exec_cmd(fn .. "kbd-toggle"), { locked = true })
+hl.bind("XF86AudioPause", hl.dsp.exec_cmd(fn .. "play"), { locked = true })
+hl.bind("XF86AudioRewind", hl.dsp.exec_cmd(fn .. "prev"), { locked = true })
+hl.bind("XF86AudioForward", hl.dsp.exec_cmd(fn .. "next"), { locked = true })
+hl.bind("XF86WLAN", hl.dsp.exec_cmd(fn .. "wifi"), { locked = true })
+hl.bind("XF86RFKill", hl.dsp.exec_cmd(fn .. "airplane"), { locked = true })
+hl.bind("XF86UWB", hl.dsp.exec_cmd(fn .. "airplane"), { locked = true })
+hl.bind("XF86Bluetooth", hl.dsp.exec_cmd(fn .. "bluetooth"), { locked = true })
+hl.bind("XF86TouchpadToggle", hl.dsp.exec_cmd(fn .. "touchpad"), { locked = true })
+hl.bind("XF86TouchpadOn", hl.dsp.exec_cmd(fn .. "touchpad"), { locked = true })
+hl.bind("XF86TouchpadOff", hl.dsp.exec_cmd(fn .. "touchpad"), { locked = true })
+hl.bind("XF86Display", hl.dsp.exec_cmd(fn .. "display"), { locked = true })
+hl.bind("XF86DisplayOff", hl.dsp.exec_cmd("hyprctl dispatch dpms off"), { locked = true })
+hl.bind("XF86WebCam", hl.dsp.exec_cmd(fn .. "webcam"), { locked = true })
+hl.bind("XF86Calculator", hl.dsp.exec_cmd(fn .. "calc"), { locked = true })
+hl.bind("XF86Explorer", hl.dsp.exec_cmd(fn .. "explorer"), { locked = true })
+hl.bind("XF86HomePage", hl.dsp.exec_cmd(fn .. "explorer"), { locked = true })
+hl.bind("XF86MyComputer", hl.dsp.exec_cmd(fn .. "explorer"), { locked = true })
+hl.bind("XF86WWW", hl.dsp.exec_cmd(fn .. "browser"), { locked = true })
+hl.bind("XF86Mail", hl.dsp.exec_cmd(fn .. "mail"), { locked = true })
+hl.bind("XF86Search", hl.dsp.exec_cmd(fn .. "search"), { locked = true })
+hl.bind("XF86ScreenSaver", hl.dsp.exec_cmd(fn .. "lock"), { locked = true })
+hl.bind("XF86Lock", hl.dsp.exec_cmd(fn .. "lock"), { locked = true })
+hl.bind("XF86Sleep", hl.dsp.exec_cmd(fn .. "sleep"), { locked = true })
+hl.bind("XF86Suspend", hl.dsp.exec_cmd(fn .. "sleep"), { locked = true })
+hl.bind("XF86Hibernate", hl.dsp.exec_cmd(fn .. "hibernate"), { locked = true })
+hl.bind("XF86PowerOff", hl.dsp.exec_cmd(fn .. "power"), { locked = true })
+hl.bind("XF86Battery", hl.dsp.exec_cmd(fn .. "battery"), { locked = true })
+
+-- Bas-konus (Discord PTT fix): ALT_L basili = mic acik, birak = mic kapali.
+-- Discord'u "Ses Etkinligi" moduna al, Discord ici PTT tusunu kaldir.
+-- Tusu degistirmek icin ALT_L yerine baska tus yaz (Caps_Lock, Control_R...).
+local ptt_key = "ALT_L"
+hl.bind(ptt_key, hl.dsp.exec_cmd(fn .. "ptt-on"))
+if hl.bindr then
+    hl.bindr(ptt_key, hl.dsp.exec_cmd(fn .. "ptt-off"))
+else
+    -- HyprMod'un hl.bindr destegi yoksa hyprland.conf'taki su satirlari kullan:
+    -- bind = , ALT_L, exec, sh ~/.config/hypr/fn-osd.sh ptt-on
+    -- bindr = , ALT_L, exec, sh ~/.config/hypr/fn-osd.sh ptt-off
+end
+hl.on("hyprland.start", function()
+    hl.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 1")
+end)
 hl.bind("ALT + Q", hl.dsp.window.close())
 hl.bind("ALT + Space", hl.dsp.exec_cmd("pkill wofi || wofi --show drun"))
 hl.bind(var_mainMod .. " + " .. "X", hl.dsp.exec_cmd("pkill wofi || /home/insanmusti/.config/wofi/powermenu.sh"))
