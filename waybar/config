@@ -11,6 +11,7 @@
     "clock"
   ],
   "modules-right": [
+    "hyprland/language",
     "cpu",
     "memory",
     "battery",
@@ -21,9 +22,14 @@
     "custom/power"
   ],
   "clock": {
-    "format": "\uf017 {:%d %b %H:%M}",
+    "format": " {:%d %b %H:%M}",
     "tooltip-format": "{:%A %d %B %Y}",
     "on-click": "swaync-client -t -sw"
+  },
+  "hyprland/language": {
+    "format": " {}",
+    "format-en": "EN",
+    "format-tr": "TR"
   },
   "cpu": {
     "format": "\uf2db {usage}%",
