@@ -84,7 +84,7 @@
   "custom/power": {
     "format": "\u23fb",
     "tooltip": "G\u00fc\u00e7 men\u00fcs\u00fc",
-    "on-click": "/home/insanmusti/.config/wofi/powermenu.sh"
+    "on-click": "~/.config/wofi/powermenu.sh"
   },
   "ext/workspaces": {
     "format": "{icon}",

@@ -134,19 +134,19 @@ hl.bind(var_mainMod .. " + SHIFT + Print", hl.dsp.exec_cmd("mkdir -p ~/Pictures 
 require("hyprland-gui")
 
 -- ses/parlaklik OSD + medya + eksik tuslar (tek kopya)
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd("/home/insanmusti/.config/hypr/vol-osd.sh mute"), {
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("~/.config/hypr/vol-osd.sh mute"), {
     locked = true,
 })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("/home/insanmusti/.config/hypr/vol-osd.sh down"), {
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("~/.config/hypr/vol-osd.sh down"), {
     locked = true,
 })
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("/home/insanmusti/.config/hypr/vol-osd.sh up"), {
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("~/.config/hypr/vol-osd.sh up"), {
     locked = true,
 })
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("/home/insanmusti/.config/hypr/bri-osd.sh down"), {
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("~/.config/hypr/bri-osd.sh down"), {
     locked = true,
 })
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("/home/insanmusti/.config/hypr/bri-osd.sh up"), {
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("~/.config/hypr/bri-osd.sh up"), {
     locked = true,
 })
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), {
@@ -163,7 +163,7 @@ hl.bind("XF86AudioStop", hl.dsp.exec_cmd("playerctl stop"), {
 })
 -- Laptop Fn+F1..F12 (Fn OS'e modifier olarak gorunmez, cekirdek XF86 uretir)
 -- sh ile cagirilir, +x biti gerekmez.
-local fn = "sh /home/insanmusti/.config/hypr/fn-osd.sh "
+local fn = "sh ~/.config/hypr/fn-osd.sh "
 hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd(fn .. "mic"), { locked = true })
 hl.bind("XF86KbdBrightnessDown", hl.dsp.exec_cmd(fn .. "kbd-down"), { locked = true })
 hl.bind("XF86KbdBrightnessUp", hl.dsp.exec_cmd(fn .. "kbd-up"), { locked = true })
@@ -213,5 +213,5 @@ hl.on("hyprland.start", function()
 end)
 hl.bind("ALT + Q", hl.dsp.window.close())
 hl.bind("ALT + Space", hl.dsp.exec_cmd("pkill wofi || wofi --show drun"))
-hl.bind(var_mainMod .. " + " .. "X", hl.dsp.exec_cmd("pkill wofi || /home/insanmusti/.config/wofi/powermenu.sh"))
+hl.bind(var_mainMod .. " + " .. "X", hl.dsp.exec_cmd("pkill wofi || ~/.config/wofi/powermenu.sh"))
 hl.bind(var_mainMod .. " + SHIFT + V", hl.dsp.exec_cmd("cliphist list | wofi --dmenu --prompt \"Pano\" | cliphist decode | wl-copy"))
