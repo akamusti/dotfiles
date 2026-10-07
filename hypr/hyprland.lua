@@ -193,17 +193,17 @@ hl.bind("XF86Hibernate", hl.dsp.exec_cmd(fn .. "hibernate"), { locked = true })
 hl.bind("XF86PowerOff", hl.dsp.exec_cmd(fn .. "power"), { locked = true })
 hl.bind("XF86Battery", hl.dsp.exec_cmd(fn .. "battery"), { locked = true })
 
--- Bas-konus (Discord PTT fix): ALT_L basili = mic acik, birak = mic kapali.
+-- Bas-konus (Discord PTT fix): Alt_L basili = mic acik, birak = mic kapali.
 -- Discord'u "Ses Etkinligi" moduna al, Discord ici PTT tusunu kaldir.
--- Tusu degistirmek icin ALT_L yerine baska tus yaz (Caps_Lock, Control_R...).
-local ptt_key = "ALT_L"
+-- Tusu degistirmek icin Alt_L yerine baska tus yaz (Caps_Lock, Control_R...).
+local ptt_key = "Alt_L"
 hl.bind(ptt_key, hl.dsp.exec_cmd(fn .. "ptt-on"))
 if hl.bindr then
     hl.bindr(ptt_key, hl.dsp.exec_cmd(fn .. "ptt-off"))
 else
     -- HyprMod'un hl.bindr destegi yoksa hyprland.conf'taki su satirlari kullan:
-    -- bind = , ALT_L, exec, sh ~/.config/hypr/fn-osd.sh ptt-on
-    -- bindr = , ALT_L, exec, sh ~/.config/hypr/fn-osd.sh ptt-off
+    -- bind = , Alt_L, exec, sh ~/.config/hypr/fn-osd.sh ptt-on
+    -- bindr = , Alt_L, exec, sh ~/.config/hypr/fn-osd.sh ptt-off
 end
 hl.on("hyprland.start", function()
     hl.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 1")
