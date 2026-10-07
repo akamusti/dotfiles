@@ -121,6 +121,19 @@ case "$1" in
   hibernate) hyprlock & sleep 1; systemctl hibernate ;;
   power) pkill wofi 2>/dev/null || ~/.config/wofi/powermenu.sh & ;;
 
+  # ---- Guc profili dongusu (Waybar pil tiklamasi) ----
+  power-profile)
+    if command -v powerprofilesctl >/dev/null 2>&1; then
+      case "$(powerprofilesctl get 2>/dev/null)" in
+        balanced) powerprofilesctl set performance ;;
+        performance) powerprofilesctl set power-saver ;;
+        *) powerprofilesctl set balanced ;;
+      esac
+      note 9998 "Guc: $(powerprofilesctl get 2>/dev/null)"
+    else
+      sh "$0" battery
+    fi ;;
+
   # ---- Pil durumu (XF86Battery) ----
   battery)
     if [ -r /sys/class/power_supply/BAT0/capacity ]; then

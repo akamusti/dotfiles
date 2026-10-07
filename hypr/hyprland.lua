@@ -4,6 +4,13 @@ hl.config({
     cursor = {
         no_hardware_cursors = true,
     },
+    -- NVIDIA (proprietary surucu) ince ayarlari
+    opengl = {
+        nvidia_anti_flicker = 0,
+    },
+    render = {
+        explicit_sync = 1,
+    },
     input = {
         kb_layout = "tr,us",
         kb_options = "grp:alt_shift_toggle",
@@ -118,10 +125,10 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("blueman-applet &")
 end)
 
-hl.bind(var_mainMod .. " + Print", hl.dsp.exec_cmd("grim -g \"$(slurp)\" ~/Pictures/screenshot-$(date +%F-%H%M%S).png"))
 hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region --raw | swappy -f -"))
 hl.bind("SHIFT + Print", hl.dsp.exec_cmd("hyprshot -m region --clipboard"))
 hl.bind(var_mainMod .. " + Print", hl.dsp.exec_cmd("hyprshot -m window --clipboard"))
+hl.bind(var_mainMod .. " + SHIFT + Print", hl.dsp.exec_cmd("mkdir -p ~/Pictures && grim ~/Pictures/screenshot-$(date +%F-%H%M%S).png"))
 
 -- HyprMod managed settings
 require("hyprland-gui")
@@ -207,3 +214,4 @@ end)
 hl.bind("ALT + Q", hl.dsp.window.close())
 hl.bind("ALT + Space", hl.dsp.exec_cmd("pkill wofi || wofi --show drun"))
 hl.bind(var_mainMod .. " + " .. "X", hl.dsp.exec_cmd("pkill wofi || /home/insanmusti/.config/wofi/powermenu.sh"))
+hl.bind(var_mainMod .. " + SHIFT + V", hl.dsp.exec_cmd("cliphist list | wofi --dmenu --prompt \"Pano\" | cliphist decode | wl-copy"))

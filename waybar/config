@@ -78,7 +78,8 @@
       "warning": 30,
       "critical": 15
     },
-    "on-click": "kitty -e htop"
+    "on-click": "sh ~/.config/hypr/fn-osd.sh power-profile",
+    "on-click-right": "sh ~/.config/hypr/fn-osd.sh battery"
   },
   "custom/power": {
     "format": "\u23fb",
@@ -95,7 +96,7 @@
       "5": "5"
     },
     "on-click": "activate",
-    "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'",
-    "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'"
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1"
   }
 }
