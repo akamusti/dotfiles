@@ -130,6 +130,13 @@ case "$1" in
         *) powerprofilesctl set balanced ;;
       esac
       note 9998 "Guc: $(powerprofilesctl get 2>/dev/null)"
+    elif command -v tuned-adm >/dev/null 2>&1; then
+      # Fedora KDE spin tuned kullanir (power-profiles-daemon ile cakisir, kurma)
+      case "$(tuned-adm active 2>/dev/null | sed 's/.*: //')" in
+        *powersave*) tuned-adm profile balanced ;;
+        *) tuned-adm profile powersave ;;
+      esac
+      note 9998 "Guc: $(tuned-adm active 2>/dev/null | sed 's/.*: //')"
     else
       sh "$0" battery
     fi ;;

@@ -51,8 +51,9 @@ seviyesinde: **sol ALT basiliyken mikrofon acik, birakinca kapali**
 
 ### Waybar pil
 
-Sol tik guc profilini dondurur (balanced → performance → power-saver),
-sag tik pil bilgisini gosterir.
+Sol tik guc profilini dondurur (power-profiles-daemon veya tuned uyumlu;
+ikisi de yoksa pil bilgisi gosterir), sag tik pil bilgisini gosterir.
+KDE spin tuned kullandigi icin power-profiles-daemon kurma (cakisir).
 
 ## Notlar
 
