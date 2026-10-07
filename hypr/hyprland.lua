@@ -5,11 +5,9 @@ hl.config({
         no_hardware_cursors = true,
     },
     -- NVIDIA (proprietary surucu) ince ayarlari
+    -- (render.explicit_sync bu yukleyicide bilinmiyor, conf'ta duruyor)
     opengl = {
         nvidia_anti_flicker = 0,
-    },
-    render = {
-        explicit_sync = 1,
     },
     input = {
         kb_layout = "tr,us",
@@ -189,7 +187,6 @@ hl.bind("XF86WWW", hl.dsp.exec_cmd(fn .. "browser"), { locked = true })
 hl.bind("XF86Mail", hl.dsp.exec_cmd(fn .. "mail"), { locked = true })
 hl.bind("XF86Search", hl.dsp.exec_cmd(fn .. "search"), { locked = true })
 hl.bind("XF86ScreenSaver", hl.dsp.exec_cmd(fn .. "lock"), { locked = true })
-hl.bind("XF86Lock", hl.dsp.exec_cmd(fn .. "lock"), { locked = true })
 hl.bind("XF86Sleep", hl.dsp.exec_cmd(fn .. "sleep"), { locked = true })
 hl.bind("XF86Suspend", hl.dsp.exec_cmd(fn .. "sleep"), { locked = true })
 hl.bind("XF86Hibernate", hl.dsp.exec_cmd(fn .. "hibernate"), { locked = true })
