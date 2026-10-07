@@ -2,8 +2,83 @@
 
 Fedora + Hyprland + Catppuccin Mocha. KDE yaninda ikinci oturum olarak kurulu.
 
-Kurulum: klasorleri `~/.config` altina kopyala (`hypr/`, `waybar/`, `kitty/`,
-`swaync/`, `wofi/`). Tum path'ler `~` ile yazildi, kullanici adindan bagimsiz.
+Kurulum: asagidaki adimlari izle. Tum path'ler `~` ile yazildi,
+kullanici adindan bagimsiz.
+
+## Kurulum (Fedora, KDE yani)
+
+Hyprland Fedora deposunda yok; resmi wiki Fedora icin
+`lionheartp/Hyprland` COPR'unu onerir:
+
+```bash
+sudo dnf copr enable lionheartp/Hyprland
+sudo dnf install hyprland hyprpaper hyprlock hypridle hyprshot xdg-desktop-portal-hyprland \
+  waybar wofi swaync kitty \
+  grim slurp swappy cliphist wl-clipboard \
+  playerctl brightnessctl libnotify \
+  network-manager-applet nm-connection-editor blueman bluez \
+  pavucontrol htop upower \
+  qt6-qtwayland \
+  jetbrains-mono-fonts fontawesome-fonts \
+  thunar
+```
+
+Opsiyonel (eksikse ilgili Fn tusu sadece bildirim gosterir):
+
+```bash
+sudo dnf install gnome-calculator guvcview thunderbird wdisplays
+sudo systemctl enable --now bluetooth
+```
+
+Configleri yerlestir:
+
+```bash
+git clone https://github.com/akamusti/dotfiles ~/dotfiles
+cp -r ~/dotfiles/hypr ~/dotfiles/waybar ~/dotfiles/kitty ~/dotfiles/swaync ~/dotfiles/wofi ~/.config/
+mkdir -p ~/Pictures
+chmod +x ~/.config/hypr/*.sh ~/.config/wofi/powermenu.sh
+```
+
+Oturumu kapat, giris ekraninda **Hyprland**'i sec, gir. Her sey
+`exec-once` ile kendiliginden baslar.
+
+Notlar:
+- KDE spin `tuned` kullanir; `power-profiles-daemon` kurma (cakisir).
+  Pil dugmesi tuned ile calisir.
+- Polkit ajani KDE'den gelir. KDE'siz minimal kurulumda
+  `hyprland.conf`'taki polkit satirini `hyprpolkitagent`'e cevir.
+- NVIDIA kart icin RPM Fusion'dan `akmod-nvidia` gerekir.
+
+## Kaldirma (vazgecersem)
+
+1. Oturumu kapat, **Plasma (KDE)** ile gir.
+2. Sadece Hyprland katmanini kaldir (font, bluetooth altyapisi,
+   qt6-qtwayland gibi KDE'nin de kullandiklari durur):
+
+```bash
+sudo dnf remove hyprland hyprpaper hyprlock hypridle hyprshot xdg-desktop-portal-hyprland \
+  waybar wofi swaync kitty \
+  grim slurp swappy cliphist wl-clipboard \
+  playerctl brightnessctl \
+  network-manager-applet nm-connection-editor blueman \
+  pavucontrol thunar wdisplays guvcview
+sudo dnf copr disable lionheartp/Hyprland
+```
+
+3. Configleri yedekle (veya sil):
+
+```bash
+mkdir -p ~/.config-bak
+mv ~/.config/hypr ~/.config/waybar ~/.config/kitty ~/.config/swaync ~/.config/wofi ~/.config-bak/
+```
+
+4. Guc profilini degistirdiysen geri al:
+
+```bash
+tuned-adm profile balanced
+```
+
+`~/Pictures` altindaki ekran goruntuleri silinmez, durur.
 
 ## Tuslar (SUPER = Win)
 
